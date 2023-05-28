@@ -135,6 +135,7 @@ static const Key keys[] = {
 	{ MODKEY,		     XKB_KEY_x,          incgaps,       {.i = -3 } },
 	{ MODKEY,		     XKB_KEY_a,          togglegaps,     {0} },
 	{ MODKEY|WLR_MODIFIER_SHIFT, XKB_KEY_A,          defaultgaps,    {0} },
+	{ MODKEY,		     XKB_KEY_s,		 togglesticky,	 {0} },
 	{ MODKEY,                    XKB_KEY_space,      zoom,           {0} },
 	{ MODKEY,                    XKB_KEY_Tab,        view,           {0} },
 	{ MODKEY,                    XKB_KEY_g,          shiftview,      { .i = -1 } },
