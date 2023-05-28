@@ -115,6 +115,8 @@ static const char *termcmd[] = { "foot", NULL };
 static const char *menucmd[] = { "bemenu-run", NULL };
 static const char *browsercmd[] = { "librewolf", NULL };
 
+#include "shiftview.c"
+
 static const Key keys[] = {
 	/* Note that Shift changes certain key codes: c -> C, 2 -> at, etc. */
 	/* modifier                  key                 function        argument */
@@ -132,12 +134,21 @@ static const Key keys[] = {
 	{ MODKEY,		     XKB_KEY_z,          incgaps,       {.i = +3 } },
 	{ MODKEY,		     XKB_KEY_x,          incgaps,       {.i = -3 } },
 	{ MODKEY,		     XKB_KEY_a,          togglegaps,     {0} },
+	{ MODKEY|WLR_MODIFIER_SHIFT, XKB_KEY_A,          defaultgaps,    {0} },
 	{ MODKEY,                    XKB_KEY_space,      zoom,           {0} },
 	{ MODKEY,                    XKB_KEY_Tab,        view,           {0} },
+	{ MODKEY,                    XKB_KEY_g,          shiftview,      { .i = -1 } },
+	{ MODKEY,                    XKB_KEY_semicolon,  shiftview,      { .i = 1 } },
+	{ MODKEY|WLR_MODIFIER_SHIFT, XKB_KEY_G,          shifttag,       { .i = -1 } },
+	{ MODKEY|WLR_MODIFIER_SHIFT, XKB_KEY_semicolon,  shifttag,       { .i = 1 } },
+	{ MODKEY,		     XKB_KEY_Page_Up,	 shiftview,	 { .i = -1 } },
+	{ MODKEY|WLR_MODIFIER_SHIFT, XKB_KEY_Page_Up,	 shifttag,	 { .i = -1 } },
+	{ MODKEY,		     XKB_KEY_Page_Down,	 shiftview,	 { .i = +1 } },
+	{ MODKEY|WLR_MODIFIER_SHIFT, XKB_KEY_Page_Down,	 shifttag,	 { .i = +1 } },
 	{ MODKEY,		     XKB_KEY_q,          killclient,     {0} },
 	{ MODKEY,                    XKB_KEY_t,          setlayout,      {.v = &layouts[0]} },
 	{ MODKEY|WLR_MODIFIER_SHIFT, XKB_KEY_F,          setlayout,      {.v = &layouts[1]} },
-	{ MODKEY|WLR_MODIFIER_SHIRT, XKB_KEY_U,          setlayout,      {.v = &layouts[2]} },
+	{ MODKEY|WLR_MODIFIER_SHIFT, XKB_KEY_U,          setlayout,      {.v = &layouts[2]} },
 	// { MODKEY,                    XKB_KEY_space,      setlayout,      {0} },
 	{ MODKEY|WLR_MODIFIER_SHIFT, XKB_KEY_space,      togglefloating, {0} },
 	{ MODKEY,                    XKB_KEY_f,          togglefullscreen, {0} },
